@@ -1,0 +1,302 @@
+:root{
+    --fuenteHeading: 'Open Sans', sans-serif;
+    --fuenteParrafos: 'TP Sans', sans-serif;
+
+    --primario: #784D3C;
+    --gris: #e1e1e1;
+    --blanco: #ffffff;
+    --negro: #000000;
+}
+
+html{
+    box-sizing: border-box;/*Border o padding etc.. No afecte el ancho de los elementos*/
+    font-size: 62.5%; /*Para que un 1rem sea igual a 10px*/
+}
+
+*, *:before, *:after{
+    box-sizing: inherit; /*Hereda del padre que es el html para usarlo tabiem antes o despues en otro selector*/
+}
+
+body{
+    font-family: var(--fuenteParrafos);
+    font-size: 1.6rem; /*Tamaño de la letra*/
+    line-height: 2; /*Interlineado*/
+}
+
+/*Globales*/
+
+.contenedor{
+    max-width: 120rem; /*Este lo aplica cuando el tamaño de la pantalla es de 1200px*/
+    width: 90%; /*este cuando es menos de 1200px es dinamico al 90% de la pantalla*/
+    margin: 0 auto; /*Centrar el contenido horizontalmente*/
+}
+
+a{
+    text-decoration: none; /*Quitar los interlineado en los enlaces*/
+}
+
+h1, h2, h3, h4{
+    font-family: var(--fuenteHeading);
+    line-height: 1.2;
+}
+
+h1{
+    font-size: 4.8rem;
+}
+
+h2{
+    font-size: 4rem;
+}
+
+h3{
+    font-size: 3rem;
+}
+
+h4{
+    font-size: 2.8rem;
+}
+
+img{
+    max-width: 100%; /*Una forma de hacer la imagenes responsivas, que fluyan al 100% de la pantalla*/
+}
+
+/*Utilidades*/
+.no-margin{
+    margin: 0; /*Como el navegador agrega maring por defecto, este codigo se lo elimina*/
+}
+
+.no-padding{
+    padding: 0;/*Como el navegador agrega padding por defecto, este codigo se lo elimina*/
+}
+
+.centrar-texto{
+    text-align: center;
+}
+
+/*Header*/
+.header{
+    background-image: url(../img/banner.jpg);/*Selecciono la imaguen que eista fuera de la carpeta*/
+    height: 60rem; /*Leasigno un alutra de 600px*/
+    background-size: cover; /*Para  cubrir el 100% del espacio del header*/
+    background-repeat: no-repeat; /*Para que la imaguen no se repita*/
+    background-position: center center; /*Para que se muestre en centro del header(Imagen) al cambiar las deimesion de la pantalla a mas pequeña*/
+}
+
+.header__texto{
+    text-align: center;
+    color: var(--blanco);
+    margin-top: 5rem;
+}
+
+@media (min-width: 768px) {
+    .header__texto{
+        margin-top: 15rem;
+    }
+}
+
+.barra{
+    padding-top: 4rem;
+}
+
+@media (min-width: 768px) {
+    .barra{
+        display: flex;
+        justify-content: space-between; /*centar horizontalmente*/
+        align-items: center; /*centrar verticalmente*/
+    }
+}
+
+.logo{
+    color: var(--blanco);
+}
+
+.logo__nombre{
+    font-weight: normal; /*Le aplica la fuente que se buscado den google font*/
+}
+
+.logo__bold{
+    font-weight: bold; /*Le aplica la fuente que se buscado den google font*/
+}
+
+/*Primero el tamo de tablet en adelalnte para que presente la navegacion horixontalmene y con separacion*/
+@media (min-width: 768px) {
+    .navegacion{
+        display: flex; /*El display: flex; siempre alinea los elementos horizontalmente*/
+        gap: 2rem;
+    }
+}
+
+/*Despues el caso contrario para dispositivos de 480px para abajo aplica estas caracteristicas*/
+.navegacion__enlace{
+    display: block; /*Sirve para colocar los elementos texto etc.. uno debajo del otro */
+    text-align: center;
+    font-size: 1.8rem;
+    color: var(--blanco);
+}
+
+/*Contenido principal*/
+
+@media (min-width: 768px) {
+    .contenido-principal{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        column-gap: 4rem;
+    }
+}
+
+.entrada{
+    border-bottom: 1px solid var(--gris); /*Agrega un borde debajo de cada elemento*/
+    margin-bottom: 2rem; /*agrega margen debajo del borde*/
+}
+
+/*A la ultima entrada o elemento le quita el borde el margen*/
+.entrada:last-of-type{
+    border: none;
+    margin-bottom: 0;
+}
+
+.boton{
+    display: block; /*para que tome todo el espacio esponible*/
+    color: var(--blanco);
+    font-family: var(--fuenteHeading);
+    text-align: center;
+    padding: 1rem 3rem; /*1 rem arriba y abajo 3 rem izquierda y derecha*/
+    font-size: 1.8rem;
+    text-transform: uppercase; /*lo transforma de minuscula a mayuscula*/
+    font-weight: bold; /*Anchura de la letra*/
+    margin-bottom: 2rem;
+    border: none;
+}
+
+@media (min-width: 768px) {
+    .boton{
+        display: inline-block; /*Este display solo toma loe que requiere respetando la caracteristcas antes dadas al boton. se ve mas pequeño en dispositivos grandes*/
+    }
+}
+.boton:hover{
+    cursor: pointer;
+}
+.boton--primario{
+    background-color: var(--negro);
+}
+.boton--secundario{
+    background-color: var(--primario);
+}
+.cursos{
+    list-style: none;
+}
+
+.widget-curso{
+    border-bottom: 1px solid var(--gris);
+    margin: 2rem;
+}
+.widget-curso:last-of-type{ /*last-of-type se le conoce como pseudo selector*/
+    border: none;
+    border-bottom: 0;
+}
+.widget-curos__label{
+    font-family: var(--fuenteHeading);
+    font-weight: bold;
+}
+.widget-curso__info{
+    font-weight: normal;
+}
+
+.widget-curos__label,
+.widget-curso__info{
+    font-size: 2rem;
+}
+
+/*footer*/
+
+.footer{
+    background-color: var(--negro);
+    padding-bottom: 3rem;
+    margin: top 4rem;
+}
+
+/*Nosotros*/
+
+@media (min-width: 768px) {
+    .sobre-nosotros{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+}
+
+/*Cursos*/
+
+.curso{
+    padding: 3rem/*arriba y abajo*/ 0/*izquierda derecha*/;
+    border-bottom: 1px solid var(--gris);
+}
+
+@media (min-width: 768px) {
+    .curso{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        column-gap: 2rem;
+    }
+}
+.cuso:last-of-type{
+    border: none;
+}
+
+.curos__label{
+    font-family: var(--fuenteHeading);
+    font-weight: bold;
+}
+.curso__info{
+    font-weight: normal;
+}
+
+.curos__label,
+.curso__info{
+    font-size: 2rem;
+}
+
+/* Contacto*/
+
+.contacto-bg{ 
+    background-image: url(../img/contacto.jpg);
+    height: 40rem; /*altura de la imagen*/
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.formulario{
+    background-color: var(--blanco);
+    margin: -5rem auto 0 auto;
+    width: 95%;
+    padding: 5rem;
+}
+
+.campo{
+    display: flex;
+    margin-bottom: 2rem; /* separacion entre input*/
+}
+
+.campo__label{
+    flex: 0 0 8rem; /*acomda los label del los campos*/ 
+    padding-right: 2rem;
+    text-align: left;
+}
+
+@media (min-width: 300px) {
+     .campo__field{
+        width: 100%;
+    }
+}
+
+.campo__field{
+    flex: 1; /*va crecer un 1px por cada 0 pixel que recibe del label*/
+    border: 1px solid var(--gris);
+}
+
+.campo__field--texarea{
+    height: 20rem;
+    flex: 1;
+    border: 1px solid var(--gris);
+}
